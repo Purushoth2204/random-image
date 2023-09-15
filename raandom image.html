@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>display random image</h1>
+    <div class="container" style="width:400px;height:400px;border: 2px solid black;margin: auto;">
+     <img id="unsplashimg" style="width:400px;height:400px;">
+    </div>
+    <script>
+        let clientID="W0-OA7rPtYoe2xPWTwGy2fevdWK2iymZHNGIvJQUc4Q";
+        let endpoint=`https://api.unsplash.com/photos/random/?client_id=${clientID}`;
+
+        let imageElement = document.querySelector("#unsplashimg");
+        
+
+        fetch(endpoint)
+          .then(function (response){
+             return response.json();
+          })
+          .then(function (jsonData){
+            imageElement.src = jsonData.urls.regular;
+          })
+    </script>
+</body>
+</html>
